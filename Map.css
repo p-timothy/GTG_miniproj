@@ -1,0 +1,32 @@
+#map{
+    position: absolute;
+    top: 148px;
+    bottom: 0px;
+    width: 100%;
+}
+
+#navBar {height: 143px; width: 100%;}
+
+#logo {position: absolute; padding: 0px; margin: 0px;}
+
+.Name {position: relative; top: 12px; left: 106px; padding: 0px; 
+       font-family: 'Playfair Display', serif; font-size: 48px; 
+       text-align: center; color: black; text-decoration: none;}
+
+.NameLower {position: relative; top: 41px; left: -123px;
+            font-family: 'Playfair Display', serif; font-size: 15px;}
+
+#toilet {position: absolute; top: 4px; left: -10px;}
+
+ul {margin: 0px; padding: 5px; list-style-type: none; height: 40px;}
+ul li {margin-left: 1px;}
+
+li {float: left;}
+li a {display: block; color: black; text-align: center; padding: 10px; text-decoration: none;
+      background-color: rgb(241,241,241);}
+li a:hover {background-color: rgb(185,185,185);}
+
+#navList {position: absolute; right: 5px; top: 100px}
+
+.box {position: absolute; top: 143px; left: 0px; width: 100%; height: 5px; background-color: rgb(133,139,156); padding: 0px; margin: 0px;}
+

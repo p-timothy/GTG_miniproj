@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>Got2GoNYC Map</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="Map.css">
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kablammo&family=Lobster+Two&family=Nabla&family=Playfair+Display&display=swap" rel="stylesheet">
+    </head>
+    
+    <body>
+        
+        <div id="map"></div>
+        
+        <div id="navBar">
+            <div id="Logo">
+                <img id="toilet" src="https://static.wixstatic.com/media/6d95d6_10beed281c7e481f9918e4200256b45c~mv2.jpeg/v1/fill/w_120,h_139,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_0928.jpeg" alt="IMG_0928.jpeg" style="width: 120px; height: 142px; object-fit: contain; object-position: center center;" width="120" height="142" srcset="https://static.wixstatic.com/media/6d95d6_10beed281c7e481f9918e4200256b45c~mv2.jpeg/v1/fill/w_120,h_139,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_0928.jpeg 1x, https://static.wixstatic.com/media/6d95d6_10beed281c7e481f9918e4200256b45c~mv2.jpeg/v1/fill/w_240,h_279,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_0928.jpeg 2x" fetchpriority="high" >
+                
+                <a href="https://www.got2gonyc.com" target="_self" class="Name">got2gonyc</a>
+                
+                <span style="font-size:15px;" class="NameLower">community | activism | storytelling</span>
+            </div>
+            
+            
+            <div id="navigaion">
+                <ul id="navList">
+                    <li><a href="https://www.got2gonyc.com/">Home</a></li>
+                    <li><a href="https://www.got2gonyc.com/about-1">Meet Teddy</a></li>
+                    <li><a href="">Media</a></li>
+                    <li><a href="https://www.got2gonyc.com/about">Bathroom Map</a></li>
+                    <li><a href="https://www.got2gonyc.com/">Stories</a></li>
+                </ul>
+            </div>
+            <div class="box">
+            </div>
+        </div>
+    
+        
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoicHRpbW15cyIsImEiOiJjbGc1Zmp6ODQwMnRrM2ZvOG5kMDA1aDM3In0.FSlp6F-U5z8ZkTHvHaPI3w';
+            
+            const bounds = [
+                [-74,40.7], //SW corner
+                [-73.7,40.9]   //NE corner
+            ]
+            
+            
+            //  load map  //
+            var map = new mapboxgl.Map({
+                container: 'map', // container id
+                style: 'mapbox://styles/ptimmys/cln6c36mq06wz01qig9ey61ga',  // stylesheet location
+                projection: 'globe',
+                center: [-73.96, 40.78],
+                zoom: 10,
+                minZoom: 9, 
+                maxZoom: 17,
+                maxBounds: bounds,
+            });
+        </script>
+    </body>
+</html>
