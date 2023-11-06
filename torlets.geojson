@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"name": "torlets",
+"features": [
+{ "type": "Feature", "properties": { "Name": "Starbucks", "lat": 40.7417314, "long": -74.0045634, "Pin": "7896" }, "geometry": { "type": "Point", "coordinates": [ -74.0045634, 40.7417314 ] } }
+]
+}

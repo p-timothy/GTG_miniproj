@@ -12,6 +12,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kablammo&family=Lobster+Two&family=Nabla&family=Playfair+Display&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500&family=Pixelify+Sans&family=Roboto+Mono&family=Yanone+Kaffeesatz:wght@400;500&display=swap" rel="stylesheet">
     </head>
     
     <body>
@@ -40,13 +41,29 @@
             <div class="box">
             </div>
         </div>
-    
+        
+        <div id='sidebar'>
+            <div id='about'>
+                <h1>About:</h1>
+                <p>Insert a little about section to re-mention the goals of gtgNYC. <br><br>
+                This section will be updated whenever a point is clicked on the map. Example layout below.</p>
+             </div>
+            <div id='toiletInfo'>
+                <p id='x' style='cursor: pointer'>x</p>
+                <h1>Toilet #<span id="toiletNum">1</span></h1>
+                <h3>Location: <span id="location">1</span></h3>
+                <h3>Pin: <span id="pinNum">1</span></h3>
+                <h3>Condition: </h3>
+                <!-- <h3>Photos:</h3> -->
+            </div>
+        </div>
         
         <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoicHRpbW15cyIsImEiOiJjbGc1Zmp6ODQwMnRrM2ZvOG5kMDA1aDM3In0.FSlp6F-U5z8ZkTHvHaPI3w';
             
+            // set map bounds
             const bounds = [
-                [-74,40.7], //SW corner
+                [-74.1,40.7], //SW corner
                 [-73.7,40.9]   //NE corner
             ]
             
@@ -62,6 +79,64 @@
                 maxZoom: 17,
                 maxBounds: bounds,
             });
+            
+            map.addControl(new mapboxgl.NavigationControl());
+            map.addControl(new mapboxgl.GeolocateControl({
+                positionOptions: { enableHightAccuracy: true },
+                trackUserLocation: true,
+                showUserHeading: true,
+                showAccuracyCircle: true
+            }));
+            
+            // on map load add geojson source and add it as a point layer
+            map.on('load', function(){
+                map.addSource('torlets', {
+                    'type': 'geojson',
+                    data: './torlets.geojson',
+                })
+                 map.addLayer({
+                    'id': 'toilets',
+                    'type': 'circle',
+                    'source': 'torlets',
+                    paint: {
+                        'circle-color': "#ffb405",
+                        
+                    }
+                })
+            });
+            
+            map.on('click', 'toilets', (e) => {
+                document.getElementById('about').style.display = 'none';
+                document.getElementById('toiletInfo').style.display = 'block';
+                
+                
+                // Get Toilet info for clicked icon
+                let toiletN = document.getElementById('toiletNum');
+                let local = document.getElementById('location');
+                let pinN = document.getElementById('pinNum');
+                
+                // Update legend with toilet info
+                toiletN.innerHTML = e.features[0].properties.Name;
+                local.innerHTML = e.features[0].properties.Name;
+                pinN.innerHTML = e.features[0].properties.Pin;
+            });      
+            
+            
+            // Change mouse display when mouse goes over icon
+            map.on('mouseenter', 'toilets', () => {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change mouse display when mouse leaves icon
+            map.on('mouseleave', 'toilets', () => {
+                map.getCanvas().style.cursor = '';
+            });
+            
+            document.getElementById('x').onclick = function() {
+                document.getElementById('about').style.display = 'block';
+                document.getElementById('toiletInfo').style.display = 'none';                
+            };
+            
         </script>
     </body>
 </html>
